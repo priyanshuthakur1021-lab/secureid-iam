@@ -682,6 +682,12 @@ document
 
             showSection("loginSection");
 
+            document.getElementById("loginForm").reset();
+            document.getElementById("loginOtpForm").reset();
+
+            document.getElementById("loginMessage").textContent = "";
+            document.getElementById("loginOtpMessage").textContent = "";
+
         } catch (error) {
             console.error("Logout error:", error);
         }
