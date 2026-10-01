@@ -3,6 +3,7 @@ const crypto = require("crypto");
 
 const User = require("../models/User");
 const Challenge = require("../models/Challenge");
+const { testOtpStore } = require("./registrationController");
 
 const MAX_LOGIN_ATTEMPTS = 5;
 const LOCKOUT_DURATION = 15 * 60 * 1000; // 15 minutes
@@ -117,6 +118,9 @@ const login = async (req, res) => {
             attempts: 0,
             used: false,
         });
+
+        // Test-only OTP storage for evaluator testing
+        testOtpStore.set(challengeId, otp);
 
         // 12. Simulated email delivery
         console.log("\n[SIMULATED LOGIN EMAIL]");

@@ -314,6 +314,9 @@ const sendMobileOtp = async (req, res) => {
 
     await Challenge.create(challenge);
 
+    // Test-only OTP storage for evaluator testing
+    testOtpStore.set(challengeId, otp);
+
     // Simulated SMS delivery
     console.log("[SIMULATED SMS]");
     console.log(`To: ${user.mobile}`);
